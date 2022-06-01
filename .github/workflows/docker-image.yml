@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: USERNAME/REPO:TAG
+          tags: 98tam/cd2020-ex04:docker
