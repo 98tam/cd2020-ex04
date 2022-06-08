@@ -35,6 +35,16 @@ jobs:
         
       - name: Build an image from Dockerfile
         run: docker build -t 98tam/demo:latest .
+        
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: '98tam/demo:latest'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: true
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
